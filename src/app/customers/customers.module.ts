@@ -6,18 +6,20 @@ import { CustomerComponent } from './customer/customer.component';
 import { CustomerAddComponent } from './customer-add/customer-add.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
-
+import { StoreModule } from '@ngrx/store';
+import { customerReducer } from './state/reducer.customers';
 
 @NgModule({
   declarations: [
     CustomerComponent,
     CustomerAddComponent,
     CustomerEditComponent,
-    CustomerListComponent
+    CustomerListComponent,
   ],
   imports: [
     CommonModule,
-    CustomersRoutingModule
-  ]
+    StoreModule.forFeature('customers', customerReducer),
+    CustomersRoutingModule,
+  ],
 })
-export class CustomersModule { }
+export class CustomersModule {}
