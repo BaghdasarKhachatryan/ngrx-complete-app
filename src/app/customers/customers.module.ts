@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { customerReducer } from './state/reducer.customers';
 import { EffectsModule } from '@ngrx/effects';
 import { CustomerEffect } from './state/effects.customers';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { CustomerEffect } from './state/effects.customers';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     EffectsModule.forFeature([CustomerEffect]),
     StoreModule.forFeature('customers', customerReducer),
