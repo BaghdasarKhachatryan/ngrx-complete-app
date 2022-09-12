@@ -1,6 +1,7 @@
 import * as customerActions from './auction.customers';
 import { Customer } from '../customer.model';
 import * as fromRoot from '../../state/app-state';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface CustomerState {
   customers: Customer[];
@@ -52,3 +53,26 @@ export function customerReducer(
     }
   }
 }
+
+export const getCustomersFeatureState =
+  createFeatureSelector<CustomerState>('customers');
+
+export const getCustomers = createSelector(
+  getCustomersFeatureState,
+  (state: CustomerState) => state.customers
+);
+
+export const getCustomersLoading = createSelector(
+  getCustomersFeatureState,
+  (state: CustomerState) => state.loading
+);
+
+export const getCustomersLoaded = createSelector(
+  getCustomersFeatureState,
+  (state: CustomerState) => state.loaded
+);
+
+export const getCustomersError = createSelector(
+  getCustomersFeatureState,
+  (state: CustomerState) => state.error
+);
